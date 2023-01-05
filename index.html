@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Inheritance and Prototype</h1>
+    <h3>Q.1 - Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h3>
+    <pre>
+        const parentObj = {
+            calAge : function(){
+                console.log(`${this.fname} ${this.lname} ${this.age}`)
+            }
+        }
+        
+        const childObj = Object.create(parentObj);
+        
+        childObj.fname="Andrew",
+        childObj.lname="Tate",
+        childObj.age=32;
+        
+        childObj.calAge();
+    </pre>
+
+    <h3>Q.2 - Write code to explain prototype chaining</h3>
+    <pre>
+        let grandfather = {
+            age: 70,
+            location: 'Hyderabad'
+        }
+        
+        const father = Object.create(grandfather);
+        
+        father.name = 'John';
+        
+        console.log(father.name);
+        console.log(father.age);  // father object don't have prototype age but it can access grandfather object prototype because of prototype chaining
+    </pre>
+
+    <h3>Q.3 - Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h3>
+    <pre>
+        const CalSum = {
+            Sum : function(arr){
+                let sum = 0;
+                for (let i=0; i < arr.length; i++){
+                    sum=sum+arr[i];
+                }
+                console.log(sum);
+            }
+        }
+        
+        CalSum.Sum([1,2,3,4,5,6])
+    </pre>
+
+    <h3>Q.4 - Write a JavaScript function to retrieve all the names of object's own and inherited properties.</h3>
+    <pre>
+        function retriveOwnProperties(user) {
+            return Object.keys(user);
+        }
+        
+        function inheritetedProperties(user) {
+            return user.toString();
+        }
+        
+        const user = {
+            name: 'Alex',
+            age: 30
+        }
+        
+        console.log(retriveOwnProperties(user));
+        console.log(inheritetedProperties(user));
+    </pre>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
